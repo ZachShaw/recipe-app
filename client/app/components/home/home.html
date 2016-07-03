@@ -1,0 +1,33 @@
+<header>
+  <hero></hero>
+</header>
+<main>
+    <section class="u-full-width">
+        <div class="container centered">
+
+            <div class="offset-by-five twelve columns">
+                <h1>{{vm.title}}</h1>
+            </div>
+
+            <br/>
+            <br/>
+
+            <div class="row">
+                <search></search>
+            </div>
+
+            <br/>
+            <br/>
+
+            <button ng-click="vm.showModal = true;">
+                <span ng-show="vm.showModal">hide modal</span>
+                <span ng-show="!vm.showModal">show modal</span>
+            </button>
+
+            <modal show="vm.showModal">
+                <p>example content</p>
+            </modal>
+
+        </div>
+    </section>
+</main>

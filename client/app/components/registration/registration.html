@@ -1,0 +1,21 @@
+<section>
+    <div class="container">
+        <div class="four columns">
+            <div class="row">
+                <label for="registrationForename">Forename</label>
+                <input class="u-full-width" type="text" placeholder="Eg. John" id="registrationForename" ng-model="vm.registration.forename" />
+                <label for="registrationSurname">Surname</label>
+                <input class="u-full-width" type="text" placeholder="Eg. Doe" id="registrationSurname" ng-model="vm.registration.surname" />
+            </div>
+            <div class="row">
+                <label for="registrationNickname">Nickname (visible to the public)</label>
+                <input class="u-full-width" type="text" id="registrationNickname" ng-model="vm.registration.nickname" />
+            </div>
+            <div class="row">
+                <label for="registrationDietryChoice">Are you?</label>
+                <label for="registrationDietryChoice">Vegan</label>
+                <input type="checkbox" ng-model="vm.registration.vegan" />
+            </div>
+        </div>
+    </div>
+</section>

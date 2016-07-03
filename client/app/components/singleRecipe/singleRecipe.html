@@ -1,0 +1,5 @@
+<h2>{{vm.heading}}</h2>
+<p>{{vm.recipe.author}} <small>on {{vm.recipe.timestamp | date: 'longDate'}}</small></p>
+<p>{{vm.recipe.description}}</p>
+<br/>
+<textarea style="width:100%;min-height:200px;">{{vm.recipe | json}}</textarea>

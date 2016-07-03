@@ -1,0 +1,37 @@
+<form>
+    <div class="row">
+        <div class="previous-comments-header">
+            <h4>Comments</h4>
+        </div>
+        <div ng-repeat="comment in vm.comments">
+            <div class="previous-comments-container">
+                <div class="previous-comments-text">
+                    <p> {{ comment.text }} </p>
+                </div>
+            </div>
+            <div class="previous-comments-user">
+                <h5>Zach. S</h5>
+            </div>
+        </div>
+    </di§v>
+    <div class="row">
+        <div class="submit-comments-wrapper">
+            <div class="comments-header">
+                <h4>Post a comment</h4>
+            </div>
+            <div class="comments-profile">
+                <img src="http://graph.facebook.com/10153443395895126/picture?height=180&amp;width=180" class="profile-image-small">
+                <div class="profile-name">
+                    <p class="small">Zach. S {{vm.userProfile.username}}</p>
+                </div>
+            </div>
+            <textarea class="u-full-width" placeholder="Leave a review or provide feedback here" ng-model="vm.commentText"></textarea>
+            <input class="button-primary" type="submit" value="Post review" ng-click="vm.showModal = true; vm.postComment(vm.commentText); vm.addComment()">
+            <modal show="vm.showModal">
+                <p ng-show="vm.promiseLoading" class="modal-message">Submitting comment...</p>
+                <p ng-show="vm.promiseSuccess" class="modal-message">Thank you for submitting your comment!</p>
+                <p ng-show="vm.promiseSuccess" class="modal-message">Continuing to do so will earn you points and reputation while encouraging our healthy community to keep growing much like the plants in all our recipes.</p>
+            </modal>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,86 @@
+// Forms
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px; // The 6px vertically centers text on FF, ignored by Webkit
+  background-color: #fff;
+  border: 1px solid lighten($border-color, 8.8%);
+  border-radius: $global-radius;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+// Removes awkward default styles on some inputs for iOS
+input {
+
+  border solid 1px #F1F1F1
+  box-shadow none
+  outline none
+  padding 10px
+  transition all 0.3s ease
+
+  &:focus {
+    border-color #000
+    outline: 0;
+  }
+
+  &[type="email"],
+  &[type="number"],
+  &[type="search"],
+  &[type="text"],
+  &[type="tel"],
+  &[type="url"],
+  &[type="password"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
+
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+textarea:focus,
+select:focus {
+  border: 1px solid $primary-color;
+  outline: 0;
+}
+
+label,
+legend {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: bold;
+}
+
+fieldset {
+  padding: 0;
+  border-width: 0;
+}
+
+input {
+  &[type="checkbox"],
+  &[type="radio"] {
+    display: inline;
+    margin-right:5px;
+  }
+}
+
+label > .label-body {
+  display: inline-block;
+  margin-left: .5rem;
+  font-weight: normal;
+}
+
+.radio-wrap label,
+.checkbox-wrap label
+  cursor pointer
+

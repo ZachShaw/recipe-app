@@ -1,0 +1,15 @@
+<form class="searchbar-wrapper">
+
+  <input class="searchbar"
+         ng-model="searchQuery"
+         placeholder="Search recipes" ></input>
+
+  <button class="button"
+          ng-click="vm.submitQuery(searchQuery)"
+          ng-disabled="!searchQuery || searchQuery.length < 3">Search
+  </button>
+
+  <br/>
+  <p ng-click="vm.submitMockData()" style="cursor:pointer;margin-top:10px;color:#888;float:left;clear:both;">Mock data</p>
+
+</form>

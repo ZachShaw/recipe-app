@@ -1,0 +1,45 @@
+.modal-wrapper
+  opacity 0
+  height 0
+  overflow hidden
+  &.active
+      position fixed
+      top 0
+      left 0
+      width 100%
+      height 100%
+      opacity 1
+      overflow visible
+
+.modal-overlay
+    opacity 0
+    transition all 0.4s ease
+    &.active
+        position absolute
+        top 0
+        left 0
+        width 100%
+        height 100%
+        background-color #000
+        text-align center
+        vertical-align middle
+        opacity 0.6
+        z-index 100
+
+.modal-content
+    position relative
+    background #FFF
+    padding  20px
+    top -50%
+    left 0
+    right 0
+    bottom 0
+    width 30%
+    margin 0 auto
+    transition all 0.3s ease
+    &.active
+        top 15%
+        z-index 101
+
+.thanks-position
+    text-align center

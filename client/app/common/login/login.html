@@ -1,0 +1,16 @@
+<a class="navbar-login" ng-click="vm.showLoginModal = true">Login</a>
+<modal show="vm.showLoginModal">
+    <form>
+        <h3>Login to your account</h3>
+        <div class="login-wrapper">
+            <label for="loginEmailInput">Email Address</label>
+            <input type="email" placeholder="test@mailbox.com" ng-model="vm.loginEmailAddress" />
+            <label for="loginPasswordInput">Password</label>
+            <input type="email" ng-model="vm.loginPassword" />
+            </br>
+            <a class="forgot-password" ui-sref="forgottenPassword">Forgotten password</a>
+            </br>
+            <input class="button-primary" type="submit" value="Login">
+        </div>
+    </form>
+</modal>

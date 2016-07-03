@@ -1,0 +1,89 @@
+<div ng-show="vm.data" class="row">
+    <h6>Recipe Results:</h6>
+    <div ng-repeat="recipe in vm.data | filter: { name: enteredSearch }">
+        <table class="u-full-width">
+        <thead>
+            <tr>
+                <th>
+                    <h2 ng-if="recipe.title">{{ recipe.title }}</h2>
+                    <h2 ng-if="recipe.name">{{ recipe.name }}</h2>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <p><a ui-sref="singleRecipe({id: recipe._id})">read more</a></p>
+                    <h5>{{ recipe.description }}</h5>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <img ng-if="recipe.imageURL" ng-src="{{ recipe.imageURL }}" height="300" width="350"/>
+                        <img ng-if="recipe.imageUrl" ng-src="{{ recipe.imageUrl }}" width="350"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="previewContainer">
+                        <h5>Cost:<h5>
+                        <h6>{{ recipe.cost }}</h6>
+                        <h5>Number of Ingredients:<h5>
+                        <h6>{{ recipe.noOfIngredients }}</h6>
+                        <h5>Difficulty:<h5>
+                        <h6>{{ recipe.difficulty }}</h6>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="showMore">
+                            <button class="btn" ng-click="recipe.showFullDetails = !recipe.showFullDetails">
+                            <span ng-show="recipe.showFullDetails">Hide Recipe</span>
+                            <span ng-show="!recipe.showFullDetails">Show Recipe</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-show="recipe.showFullDetails">
+                <td>
+                    <h4>Ingredients:</h4>
+                </td>
+            </tr>
+            <tr ng-show="recipe.showFullDetails">
+                <td>
+                    <div ng-repeat="ingr in recipe.ingredients">
+                        <ul>
+                            <li>Item: {{ ingr.name }}</li>
+                            <li>Quantity: {{ ingr.quantity }} | Type: {{ ingr.type }}</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-show="recipe.showFullDetails">
+                <td>
+                    <h4>Method:</h4>
+                </td>
+            </tr>
+            <tr ng-show="recipe.showFullDetails">
+                <td>
+                    <div ng-repeat="steps in recipe.method">
+                        <ul>
+                            <li>{{ steps.step }}</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+        <div class="upvote-container">
+            <div class="upvote-button">
+                <input class="button-primary" type="submit" value="Bookmark!" ng-click="vm.submitUpvote()">
+            </div>
+            <div class="upvote-value">
+                <h6>Upvotes: {{ vm.upvoteValue }}</h6>
+            </div>
+        </div>
+        <comments></comments>
+    </div>
+</div>

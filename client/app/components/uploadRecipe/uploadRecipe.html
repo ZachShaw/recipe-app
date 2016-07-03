@@ -1,0 +1,152 @@
+<section class="uploadRecipe">
+
+  <h2>{{vm.heading}}</h2>
+
+  <div ng-hide="vm.promiseSuccess">
+    <form name="uploadRecipeForm" class="upload-recipe-form">
+
+      <div class="col-50">
+        <label for="title">Title</label>
+        <input ng-model="vm.formObj.title"
+               name="title"
+               placeholder="My dish"
+               required />
+
+        <br/>
+        <br/>
+
+        <label for="description">Description</label>
+        <input ng-model="vm.formObj.description"
+               name="description"
+               placeholder="Amazing XYZ..."
+               required />
+
+        <br/>
+        <br/>
+
+        <label for="imageUrl">Image URL</label>
+        <input ng-model="vm.formObj.imageUrl"
+               name="imageUrl"
+               placeholder="Paste url here"
+               style="width:80%;"/>
+      </div>
+
+      <div class="col-50">
+        <p>Difficulty</p>
+        <div class="radio-wrap">
+          <label>
+            <input type="radio"
+                   ng-model="vm.formObj.difficulty"
+                   data-ng-value="1"
+                   required />1 (easy)
+          </label>
+        </div>
+        <div class="radio-wrap">
+          <label>
+            <input type="radio"
+                   ng-model="vm.formObj.difficulty"
+                   data-ng-value="2"
+                   required />2 (medium)
+          </label>
+        </div>
+        <div class="radio-wrap">
+          <label>
+            <input type="radio"
+                   ng-model="vm.formObj.difficulty"
+                   data-ng-value="3"
+                   required />3 (hard)
+          </label>
+        </div>
+      </div>
+
+      <div class="row-spacer"></div>
+
+
+      <div class="col-50" style="clear:both;">
+        <label for="cookingTime">Cooking time</label>
+        <input type="text"
+               name="cookingTime"
+               placeholder="6mins"
+               ng-model="vm.formObj.cookingTime"
+               style="width:100px;"
+               required />
+        <br/>
+        <br/>
+        <label for="prepTime">Prep time</label>
+        <input type="text"
+               name="prepTime"
+               placeholder="1min"
+               ng-model="vm.formObj.prepTime"
+               style="width:100px;"
+               required />
+      </div>
+
+      <div class="col-50">
+        <div class="checkbox-wrap">
+          <label>Gluten free?
+            <input type="checkbox" ng-model="vm.formObj.glutenFree" />
+          </label>
+        </div>
+        <br/>
+        <br/>
+        <div class="checkbox-wrap">
+          <label>Nut free?
+            <input type="checkbox" ng-model="vm.formObj.xyz" />
+          </label>
+        </div>
+      </div>
+
+      <div class="row-spacer"></div>
+
+      <div class="col-50">
+        <label>Ingredients</label>
+        <ul>
+          <li ng-repeat="ingr in vm.ingrEntries track by $index">
+            <input type="text"
+                   placeholder="{{ingr.title}}"
+                   ng-model="vm.formObj.ingredients[$index].title"
+                   required />
+          </li>
+          <button ng-click="vm.addIngrEntry();" class="button">Add an ingredient</button>
+        </ul>
+      </div>
+
+      <div class="col-50">
+        <label>Steps</label>
+        <ul>
+          <li ng-repeat="step in vm.stepsEntries track by $index">
+            <input type="text"
+                   placeholder="{{step.title}}"
+                   ng-model="vm.formObj.steps[$index].title"
+                   required />
+          </li>
+          <button ng-click="vm.addStepEntry();" class="button">Add a step</button>
+        </ul>
+      </div>
+
+      <div class="row-spacer transparent"></div>
+
+      <p style="text-align:center" ng-show="uploadRecipeForm.$invalid &&
+                  uploadRecipeForm.$dirty">Oh no, the form's not filled out :(</p>
+
+      <p style="text-align:center" ng-show="uploadRecipeForm.$valid">Yay, we're ready to plant!</p>
+
+      <p ng-show="vm.promiseLoading" style="text-align:center;">loading...</p>
+      <p ng-show="vm.promiseError" style="color:darkred;text-align:center;font-weight:bold;">Oh no! something is wrong.</p>
+      <button ng-click="vm.postForm(vm.formObj)"
+              class="button submit"
+              ng-disabled="uploadRecipeForm.$pristine ||
+                           uploadRecipeForm.$invalid ||
+                           vm.promiseLoading">Post recipe</button>
+    </form>
+  </div>
+
+  <div ng-show="vm.promiseSuccess">
+    <p style="font-size:26px;text-align:center;">Thank you! <br/> \o/ </p>
+    <p style="margin:0 auto;max-width:500px;text-align:center;">Your recipe has been sent for planting approval by our moderators. <br/>We'll let you know if or when it's planted. <br/>Yummy!</p>
+
+  <div ng-hide="vm.promiseSuccess" class="col-20">
+    <textarea style="min-height: 250px;">{{vm.formObj | json}}</textarea>
+  </div>
+
+</section>

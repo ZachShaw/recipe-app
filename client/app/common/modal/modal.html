@@ -1,0 +1,17 @@
+<div class="modal-wrapper"
+     ng-class="{active: vm.show}">
+
+  <div class="modal-overlay"
+       ng-click="vm.closeModal();"
+       ng-class="{active: vm.show}"></div>
+
+  <div class="modal-content"
+       ng-class="{active: vm.show}">
+
+    <ng-transclude></ng-transclude>
+    <div class="thanks-position">
+        <button ng-click="vm.closeModal();">Got it!</button>
+    </div>
+  </div>
+
+</div>
